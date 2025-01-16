@@ -1,22 +1,55 @@
-# Aseprite SGB Attribute Export
- Save SGB Attributes from Aseprite
+# SGB Attribute Export from Aseprite
+# Asepriteからスーパーゲームボーイのアトリビュート書き出す
 What is a Super Game Boy Attribute?
-SGB attributes are rectangular regions on the screen of Super Game Boy games that apply a different color palette inside,
-outside and/or around said region. There are 4 palettes with 3 unique colors each, and all of them must share the same 
-background color. This is how games like Donkey Kong and Pokemon were able to have so many different colors displayed on 
-the screen despite being black and white DMG Game Boy games. 
 
-How to use:
-Start by putting the Lua script into your scripts folder in Aseprite. 
-The script uses Aseprite's "slice" feature to make the SGB attributes. So you first have to make sure that you:
-1. Have slices created for your intended SGB attributes
-2. Make sure your palette abides by SGB restrictions. The script will warn you if it doesn't though.
+SGB attributes are areas on the screen that can be apply 1 of any 4 color palettes stored on the Super Nintendo. They are way give SGB compatible
+games their ability to have more than 4 colors on screen at once. 
 
-When you run the script, you'll be prompted to select a palette of four colors for each slice. When all of the slices
-have had their palettes selected, a .inc file (or maybe more than one depending on which attributes your made) will be
-generated. This is raw data that can be fed right into the SGB. 
+スーパーゲームボーイのアトリビュートって何ですか？
 
-NOTES:
+スーパーゲームボーイのアトリビュートはスーパーファミコンの中にカラーパレットをぬる３画面の上に辺です。スーパーゲームボーイは四つカラーパレットがあります。この
+カラーパレットのおかげで普通に白黒ゲームはカラフルになります。
+
+## How to use:
+## 使い方：
+
+To export data, you must first use Aseprite's "slice" feature to create rectangular areas. These areas will correspond to the different color
+palettes that will be applied. You don't have to be precise when drawing your slices. 
+
+書き出す前、Asepriteの「スライス」を作らなければなりません。スライスはスーパーゲームボーイと言えばアトリビュートになります。スライスは適当に書いてもいいですよ。
+
+![](https://github.com/Bofner/SGB-Attribute-Export-from-Aseprite/blob/main/images/slices.jpg)
+
+Select the proper script.
+
+正しいスクリプトを選びます。
+
+![](https://github.com/Bofner/SGB-Attribute-Export-from-Aseprite/blob/main/images/script.jpg)
+
+Select the SGB color palette you want to apply to the selected slice. Go through all slices, and a .inc file with the same name as the Aseprite file
+will be generated containing the raw data that can be sent to the SGB.
+
+一つずつスライスの欲しいカラーパレットを選びます。終わったらAsepriteファイルと同じ名前の生データがある.incファイルは作られます。
+
+![](https://github.com/Bofner/SGB-Attribute-Export-from-Aseprite/blob/main/images/select.jpg)
+
+You can now turn screens like this...
+
+こう言うスクリーンは...
+
+![](https://github.com/Bofner/SGB-Attribute-Export-from-Aseprite/blob/main/images/Real%20SGB%20default.jpg)
+
+into screens like this!
+
+...こんな感じになります！
+
+![](https://github.com/Bofner/SGB-Attribute-Export-from-Aseprite/blob/main/images/Real%20SGB%20Color.jpg)
+
+
+## NOTES:
+## ノート：
 For now this only supports the LIN and BLK attribute types. Perhaps in the future I will add CHR and DIV support as well. 
 The BLK feature is also not fully robust, as it only allows for creating BLK attributes with color changes being applied
 within the boundaries of your rectangle. This may also be updated later. 
+
+とりあえずBLKとLINのアトリビュートだけ作れます。BLKのアトリビュートも中の色だけ選びます。僕はいつかBLKの全部のサポートとDIVとCHRサポートを付け足すかもしれません。
